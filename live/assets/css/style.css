@@ -160,10 +160,15 @@ a,
   z-index: 1;
 }
 
+.module-columns{
+  display: flex;
+  max-width: 100%;
+}
+
 .module,
 .module-small {
   position: relative;
-  padding: 140px 0;
+  padding: 70px 0;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -171,7 +176,7 @@ a,
 
 /* Module header */
 .module-small {
-  padding: 70px 0;
+  padding: 35px 0;
 }
 
 .module-extra-small {
@@ -180,6 +185,14 @@ a,
 
 .module-medium {
   padding: 75px 0px;
+}
+
+.module.bg-light#services {
+  padding: 35px 0;
+}
+
+.module.bg-light#services .features-item {
+  margin: 15px 0;
 }
 
 .holder-w {
@@ -244,7 +257,7 @@ a,
 .bg-dark-30 .alt-module-subtitle h5,
 .bg-dark-60 .alt-module-subtitle h5,
 .bg-dark-90 .alt-module-subtitle h5 {
-  color: #fff;
+  color: #fefefe;
 }
 
 .bg-dark {
@@ -253,7 +266,7 @@ a,
 
 .bg-dark-30:before {
   position: absolute;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.2);
   content: " ";
   height: 100%;
   width: 100%;
@@ -302,6 +315,12 @@ a,
 
 .bg-light {
   background: #f6f6f6;
+  color: #000000;
+}
+
+.bg-light p,
+.bg-light .module-subtitle {
+  color: #000000;
 }
 
 .parallax-bg {
@@ -696,7 +715,7 @@ a,
 
 .btn.btn-border-w {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   color: #fff;
 }
 
@@ -1074,11 +1093,7 @@ Hero Slider
 
 .hero-slider .slides {
   height: 100% !important;
-  transition-delay: 1s;
-}
-
-.hero-slider .flex-direction-nav a {
-  width: 15%;
+  transition-delay: 0.75s;
 }
 
 .hero-slider .slides li {
@@ -1305,11 +1320,18 @@ General Styles - Owlcarousel
 .navbar-custom .dropdown-menu > li > a:hover {
   background: none;
   color: #ffd900;
-  font-size: 13px
+  font-size: 14px;
+  transform: translateY(-2px);
 }
 
-.navbar-custom .dropdown-menu > li > a:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
+.navbar-custom .nav > li > a {
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .navbar-custom .dropdown-toggle:after {
@@ -1549,11 +1571,35 @@ Google map
   text-align: center;
 }
 
-.features-icon,
-.alt-features-icon {
-  line-height: 1.2;
-  font-size: 42px;
+.features-icon {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 35px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.features-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.features-icon span {
+  position: relative;
+  line-height: 200px;
   color: #111;
+  font-size: 72px;
+  z-index: 1;
 }
 
 .features-title,
@@ -1711,69 +1757,63 @@ Google map
 /*--------------------------------------------------------------
 	Price Table
 --------------------------------------------------------------*/
-.price-table {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  padding: 25px 20px;
-  margin: 15px 0 30px;
-  border-radius: 2px;
-  text-align: center;
+.row.multi-columns-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 15px;
+  margin-top: 15px;
 }
 
-.price-table:hover {
-  border-color: #CACACA;
+.row.multi-columns-row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
+
+.price-table {
+  margin: 15px;
+  border: 1px solid rgba(203, 203, 203, 0.15);
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-height: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-top: 15px;
+  background: #f3f3f3;
+  color: #000000
+}
+
 
 .price-table.best {
-  margin: 0 0 30px;
-}
-
-.price-table .small {
-  margin: 0;
-}
-
-.borderline {
   position: relative;
-  background: #eaeaea;
-  display: block;
-  height: 1px;
-  width: 100%;
-  margin: 20px 0 15px;
+  border: 2px solid #ffd900;
 }
 
-.borderline:before {
-  position: absolute;
-  background: #eaeaea;
-  content: "";
-  bottom: -7px;
-  left: 50%;
-  height: 14px;
-  width: 14px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-left: -7px;
+.price-table .price-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0 0 23px;
+  list-style: none;
+  min-height: 200px;
 }
 
-.borderline:after {
-  position: absolute;
-  background: #fff;
-  content: "";
-  bottom: -5px;
-  left: 50%;
-  height: 16px;
-  width: 16px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-left: -8px;
+.price-table .btn {
+  margin-top: auto;
+  margin-bottom: 25px;
+  align-self: center;
 }
 
 .price-table h4 {
   color: #111;
   margin: 0;
+  padding-top: 15px;
 }
 
 .price-table p.price {
@@ -1802,7 +1842,7 @@ Google map
 
 .price-details li > span {
   text-decoration: line-through;
-  color: #aaa;
+  color: #000000;
 }
 
 /*--------------------------------------------------------------
@@ -2675,14 +2715,6 @@ Google map
   color: #080;
 }
 
-.documentation-page .kwd, .documentation-page .tag {
-  color: #008;
-}
-
-.documentation-page .typ, .documentation-page .atn, .documentation-page .dec, .documentation-page .var {
-  color: #606;
-}
-
 .documentation-page a {
   color: #19B5FE;
 }
@@ -2922,4 +2954,57 @@ Google map
   .works-grid-5 .work-item {
     width: 100%;
   }
+}
+
+@keyframes heroZoomOut {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.0);
+  }
+}
+
+.hero-slider .slides li {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out 0s;
+}
+
+.hero-slider .slides li.flex-active-slide {
+  opacity: 1;
+  z-index: 1;
+  animation: heroZoomOut 8s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Custom Lightbox Styles */
+.custom-lightbox {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.custom-lightbox .mfp-content {
+    max-width: 80vw;
+    max-height: 80vh;
+    margin: 0 auto;
+}
+
+.custom-lightbox img.mfp-img {
+    max-height: 80vh !important;
+    padding: 20px;
+}
+
+.custom-lightbox .mfp-close {
+    color: #fff;
+    right: -6px;
+    text-align: right;
+    padding-right: 6px;
+    width: 100%;
+}
+
+.custom-lightbox .mfp-figure:after {
+    box-shadow: none;
+    background: transparent;
 }

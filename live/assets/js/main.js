@@ -243,7 +243,6 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         });
 
         $(".gallery-item").magnificPopup({
-            delegate: 'a',
             type: 'image',
             gallery: {
                 enabled: true,
@@ -252,10 +251,53 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             },
             image: {
                 titleSrc: 'title',
-                tError: 'The image could not be loaded.'
+                tError: 'The image could not be loaded.',
+                verticalFit: true,
+                fit: 'contain'
+            },
+            mainClass: 'custom-lightbox',
+            closeOnContentClick: false,
+            closeOnBgClick: true,
+            closeBtnInside: true,
+            fixedContentPos: true,
+            callbacks: {
+                resize: function() {
+                    var img = this.content.find('img');
+                    img.css('max-height', '80vh');
+                    img.css('max-width', '80vw');
+                }
             }
         });
 
+        /* ---------------------------------------------- /*
+         * Portfolio gallery
+         /* ---------------------------------------------- */
+        $('.gallery-item').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0,1]
+            },
+            image: {
+                titleSrc: 'title',
+                tError: 'The image could not be loaded.',
+                verticalFit: true,
+                fit: 'contain'
+            },
+            mainClass: 'custom-lightbox',
+            closeOnContentClick: false,
+            closeOnBgClick: true,
+            closeBtnInside: true,
+            fixedContentPos: true,
+            callbacks: {
+                resize: function() {
+                    var img = this.content.find('img');
+                    img.css('max-height', '80vh');
+                    img.css('max-width', '80vw');
+                }
+            }
+        });
 
         /* ---------------------------------------------- /*
          * Portfolio
@@ -847,5 +889,3 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
     });
 })(jQuery);
-
-
