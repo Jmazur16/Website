@@ -1901,22 +1901,27 @@ Google map
 
 /* Portfolio grid */
 .works-grid {
+  position: relative;
+  clear: both;
+  margin: 0;
+  padding: 0;
   list-style: none;
+}
+
+.works-grid.works-grid-gut {
+  margin: 0;
+}
+
+.works-grid.works-grid-gut .work-item {
   padding: 0;
   margin: 0;
 }
 
-.works-grid.works-grid-gut {
-  margin: 0 0 0 -10px;
-}
-
-.works-grid.works-grid-gut .work-item {
-  padding: 0 0 10px 10px;
-}
-
 .work-item {
-  width: 50%;
+  position: relative;
   float: left;
+  width: 50%;
+  overflow: hidden;
   margin: 0;
 }
 
@@ -1924,33 +1929,27 @@ Google map
   width: 33.3333%;
 }
 
-.container .works-grid-3 .work-item {
-  width: 33.2%;
-}
-
-.works-grid-4 .work-item {
-  width: 25%;
-}
-
-.works-grid-5 .work-item {
-  width: 20%;
-}
-
 .work-item > a {
   position: relative;
   display: block;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .work-image {
   position: relative;
+  display: block;
   overflow: hidden;
+  height: 300px;
 }
 
 .work-image img {
-  display: block;
-  overflow: hidden;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .work-image:after {
@@ -1961,68 +1960,38 @@ Google map
   width: 100%;
   top: 0;
   left: 0;
-}
-
-.work-caption {
-  width: 100%;
-  padding: 0 20px;
-  opacity: 0;
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  text-align: center;
-  overflow: hidden;
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.3s cubic-bezier(0.300, 0.100, 0.580, 1.000);
 }
 
 .work-title {
-  font-size: 14px;
-  color: #fff;
-  margin: 0 0 6px;
-}
-
-.work-descr {
-  color: #aaa;
-}
-
-.work-item:hover .work-image:after {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.work-item:hover .work-image > img {
-}
-
-.work-item:hover .work-caption {
+  position: absolute;
+  margin: 0;
+  padding: 0;
   bottom: 50%;
-  opacity: 1;
-  z-index: 3;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-/* Work item white background*/
-.works-grid.works-hover-w .work-title {
-  color: #111;
-}
-
-.works-grid.works-hover-w .work-item:hover .work-image:after {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* Work item gradien background*/
-.works-grid.works-hover-g .work-image:after {
+  right: 0;
+  left: 0;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
   opacity: 0;
 }
 
-.works-grid.works-hover-g .work-descr {
-  color: #fff;
+.work-item:hover .work-image:after {
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.works-grid.works-hover-g .work-item:hover .work-image:after {
-  background: #6fe29e;
-  background: linear-gradient(135deg, rgba(111, 226, 158, 0.8) 0%, rgba(91, 218, 209, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fe29e', endColorstr='#5bdad1',GradientType=1 );
+.work-item:hover .work-title {
   opacity: 1;
+}
+
+.works-grid-4 .work-item {
+  width: 25%;
+}
+
+.works-grid-5 .work-item {
+  width: 20%;
 }
 
 .sliding-portfolio .work-item {
