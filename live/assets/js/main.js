@@ -123,8 +123,12 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                 animation: "fade",
                 animationSpeed: 1000,
                 animationLoop: true,
-                prevText: '',
-                nextText: '',
+                directionNav: true,
+                controlNav: false,
+                slideshow: true,
+                slideshowSpeed: 5000,
+                prevText: '<i class="fa fa-angle-left"></i>',
+                nextText: '<i class="fa fa-angle-right"></i>',
                 before: function(slider) {
                     $('.titan-caption').fadeOut().animate({top:'-80px'},{queue:false, easing: 'swing', duration: 700});
                     slider.slides.eq(slider.currentSlide).delay(500);
