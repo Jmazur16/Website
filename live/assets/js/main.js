@@ -242,7 +242,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             type: 'iframe'
         });
 
-        $(".gallery-item").magnificPopup({
+        $(".gallery").magnificPopup({
             type: 'image',
             gallery: {
                 enabled: true,
@@ -272,7 +272,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
         /* ---------------------------------------------- /*
          * Portfolio gallery
          /* ---------------------------------------------- */
-        $('.gallery-item').magnificPopup({
+        $(".gallery").magnificPopup({
             type: 'image',
             gallery: {
                 enabled: true,
@@ -323,7 +323,11 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             $('#filters .current').removeClass('current');
             $(this).addClass('current');
             var selector = $(this).attr('data-filter');
-
+            
+            // Show all items first
+            worksgrid.find('.work-item').show();
+            
+            // Apply the filter
             worksgrid.isotope({
                 filter: selector,
                 animationOptions: {
@@ -332,6 +336,15 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
                     queue: false
                 }
             });
+
+            // After filtering, hide items beyond the first 4
+            setTimeout(function() {
+                worksgrid.find(selector === '*' ? '.work-item' : selector).each(function(index) {
+                    if (index >= 4) {
+                        $(this).hide();
+                    }
+                });
+            }, 750);
 
             return false;
         });
