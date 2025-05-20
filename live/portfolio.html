@@ -46,6 +46,13 @@
         width: 100%;
         height: 300px;
         object-fit: cover;
+        transition: opacity 0.3s ease-in;
+      }
+      .gallery-item img[data-src] {
+        opacity: 0;
+      }
+      .gallery-item img:not([data-src]) {
+        opacity: 1;
       }
     </style>
   </head>
@@ -258,5 +265,6 @@
     <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/image-optimization.js"></script>
   </body>
 </html>
